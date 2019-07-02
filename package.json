@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/myungjaeyu/nextjs-starter/issues"
   },
-  "homepage": "https://github.com/myungjaeyu/nextjs-starter#readme"
+  "homepage": "https://github.com/myungjaeyu/nextjs-starter#readme",
+  "dependencies": {
+    "next": "^8.1.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  }
 }
