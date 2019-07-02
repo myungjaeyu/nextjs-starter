@@ -34,6 +34,7 @@
     "redux": "^4.0.1",
     "redux-create-reducer": "^2.0.0",
     "redux-observable": "^1.1.0",
-    "rxjs": "^6.5.2"
+    "rxjs": "^6.5.2",
+    "universal-rxjs-ajax": "^2.0.1"
   }
 }
