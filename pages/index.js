@@ -1,3 +1,4 @@
+import { Fragment } from 'react'
 import Helmet from 'react-helmet'
 
 import styles from '../static/styles/index.scss'
@@ -5,8 +6,10 @@ import styles from '../static/styles/index.scss'
 import png from '../static/images/png.png'
 import svg from '../static/images/svg.svg'
 
+import Layout from '../components/layout'
+
 const Index = () => (
-    <div className={ styles.index }>
+    <Fragment>
 
         <Helmet
             title='index page, nextjs-stater'
@@ -18,11 +21,16 @@ const Index = () => (
             ]}
         />
 
-        <img src={ png } alt='' />
-        <img src={ svg } alt='' />
+        <Layout childrenStyles={ styles.index }>
 
-        <p>nextjs-stater</p>
-    </div>
+            <img src={ png } alt='' />
+            <img src={ svg } alt='' />
+
+            <p>nextjs-stater</p>
+
+        </Layout>
+
+    </Fragment>
 )
 
 export default Index
