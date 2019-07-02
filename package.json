@@ -20,8 +20,10 @@
   },
   "homepage": "https://github.com/myungjaeyu/nextjs-starter#readme",
   "dependencies": {
+    "@zeit/next-sass": "^1.0.1",
     "next": "^8.1.0",
     "next-compose-plugins": "^2.2.0",
+    "node-sass": "^4.12.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   }
