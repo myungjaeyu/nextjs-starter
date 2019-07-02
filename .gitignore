@@ -1,0 +1,4 @@
+.next
+.DS_Store
+yarn.lock
+node_modules
