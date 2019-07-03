@@ -1,0 +1,9 @@
+{
+    "name": "nextjs-starter",
+    "short_name": "nextjs-starter",
+    "display": "standalone",
+    "orientation": "any",
+    "theme_color": "#FFFFFF",
+    "background_color": "#FFFFFF",
+    "start_url": "/"
+}

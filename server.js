@@ -1,3 +1,6 @@
+const { join } = require('path'),
+      { parse } = require('url')
+
 const express = require('express'),
       session = require('express-session'),
       next = require('next'),
@@ -21,9 +24,13 @@ app.prepare().then(() => {
 
     const server = express()
 
+    const handleServeStatic = (req, res) => app.serveStatic(req, res, join(__dirname, '.next', parse(req.url, true).pathname))
+
     server
         .use(session({ secret : '1', resave: false, saveUninitialized: true }))
         .use(nextI18NextMiddleware(nextI18NextInstance))
+        .get('/sw.js', (req, res) => handleServeStatic(req, res))
+        .get('/precache-manifest.*.js', (req, res) => handleServeStatic(req, res))
         .use(handler)
         .listen(port, err => {
 

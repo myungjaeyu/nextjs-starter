@@ -2,6 +2,7 @@ const withPlugins = require('next-compose-plugins')
 
 const sass = require('@zeit/next-sass')
 const opt_images = require('next-optimized-images')
+const pwa = require('next-pwa')
 
 module.exports = withPlugins([
     [sass, {
@@ -10,5 +11,6 @@ module.exports = withPlugins([
             autoprefixer: true
         }
     }],
-    [opt_images, { }]
+    [opt_images, { }],
+    [pwa, { }]
 ])
