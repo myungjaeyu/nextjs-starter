@@ -14,6 +14,7 @@ import png from '../static/images/png.png'
 import svg from '../static/images/svg.svg'
 
 import Layout from '../components/layout'
+import Profile from '../components/Profile'
 
 class Index extends Component {
 
@@ -41,6 +42,8 @@ class Index extends Component {
 
         const { data } = this.props
 
+        const { avatar_url, name, bio } = data
+
         return (
             <Fragment>
 
@@ -60,6 +63,12 @@ class Index extends Component {
                     <img src={ svg } alt='' />
 
                     <p>nextjs-stater</p>
+
+                    <Profile 
+                        avatar={ avatar_url } 
+                        name={ name } 
+                        bio={ bio }
+                    />
 
                 </Layout>
 
