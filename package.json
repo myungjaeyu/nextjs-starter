@@ -29,6 +29,7 @@
     "next-compose-plugins": "^2.2.0",
     "next-i18next": "^0.44.0",
     "next-optimized-images": "^2.5.3",
+    "next-pwa": "^1.0.7",
     "next-redux-wrapper": "^3.0.0-alpha.3",
     "next-routes": "^1.4.2",
     "node-sass": "^4.12.0",
