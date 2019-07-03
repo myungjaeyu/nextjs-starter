@@ -7,6 +7,7 @@ import withRedux from 'next-redux-wrapper'
 import store from '../store'
 
 import { appWithTranslation } from '../i18n'
+import { initGA } from '../analytics'
 
 class MyApp extends App {
 
@@ -17,6 +18,12 @@ class MyApp extends App {
         if (Component.getInitialProps) pageProps = await Component.getInitialProps(ctx)
 
         return { pageProps }
+
+    }
+
+    componentDidMount () {
+
+        initGA()
 
     }
 
