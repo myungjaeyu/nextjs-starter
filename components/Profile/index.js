@@ -1,6 +1,7 @@
 import styles from '../../static/styles/components/Profile.scss'
+import { withTranslation } from '../../i18n'
 
-export default ({ avatar, name, bio }) => (
+const Profile = ({ avatar, name, bio, t }) => (
     <article className={ styles.profile }>
 
         <img src={ avatar } alt='' />
@@ -9,5 +10,9 @@ export default ({ avatar, name, bio }) => (
 
         <h5>{ bio }</h5>
 
+        <h5>{ t('test') }</h5>
+
     </article>
 )
+
+export default withTranslation('profile')(Profile)

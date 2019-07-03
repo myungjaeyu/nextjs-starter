@@ -1,9 +1,12 @@
 import App, { Container } from 'next/app'
 import Helmet from 'react-helmet'
 
+import { compose } from 'redux'
 import { Provider } from 'react-redux'
 import withRedux from 'next-redux-wrapper'
 import store from '../store'
+
+import { appWithTranslation } from '../i18n'
 
 class MyApp extends App {
 
@@ -54,4 +57,7 @@ class MyApp extends App {
 
 }
 
-export default withRedux(store)(MyApp)
+export default compose(
+    withRedux(store),
+    appWithTranslation
+)(MyApp)
