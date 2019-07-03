@@ -1,13 +1,17 @@
 import App, { Container } from 'next/app'
 import Helmet from 'react-helmet'
 
-export default class extends App {
+import { Provider } from 'react-redux'
+import withRedux from 'next-redux-wrapper'
+import store from '../store'
 
-    static async getInitialProps ({ Component, context }) {
+class MyApp extends App {
+
+    static async getInitialProps ({ Component, ctx }) {
 
         let pageProps = {}
 
-        if (Component.getInitialProps) pageProps = await Component.getInitialProps(context)
+        if (Component.getInitialProps) pageProps = await Component.getInitialProps(ctx)
 
         return { pageProps }
 
@@ -15,32 +19,39 @@ export default class extends App {
 
     render () {
 
-        const { Component, pageProps } = this.props
+        const { Component, pageProps, store } = this.props
 
         return (
             <Container>
 
-                <Helmet
-                    htmlAttributes={
-                        { 
-                            lang: 'en'
-                        }
-                    }
-                    title='nextjs-stater'
-                    meta={[
-                        {
-                            name: 'viewport',
-                            content: 'width=device-width, initial-scale=1'
-                        },
-                        { 
-                            property: 'og:title', content: 'nextjs-stater'
-                        }
-                    ]}
-                />
+                <Provider store={ store }>
 
-                <Component { ...pageProps } />
+                    <Helmet
+                        htmlAttributes={
+                            { 
+                                lang: 'en'
+                            }
+                        }
+                        title='nextjs-stater'
+                        meta={[
+                            {
+                                name: 'viewport',
+                                content: 'width=device-width, initial-scale=1'
+                            },
+                            { 
+                                property: 'og:title', content: 'nextjs-stater'
+                            }
+                        ]}
+                    />
+
+                    <Component { ...pageProps } />
+
+                </Provider>
+
             </Container>
         )
     }
 
 }
+
+export default withRedux(store)(MyApp)
