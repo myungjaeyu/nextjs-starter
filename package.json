@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "next",
+    "dev": "nodemon server.js",
     "build": "next build",
-    "start": "next start"
+    "start": "cross-env NODE_ENV=production nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,8 @@
   "homepage": "https://github.com/myungjaeyu/nextjs-starter#readme",
   "dependencies": {
     "@zeit/next-sass": "^1.0.1",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
     "i18next": "^17.0.6",
     "immutability-helper": "^3.0.1",
     "next": "^8.1.0",
@@ -38,5 +40,9 @@
     "redux-observable": "^1.1.0",
     "rxjs": "^6.5.2",
     "universal-rxjs-ajax": "^2.0.1"
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "nodemon": "^1.19.1"
   }
 }
