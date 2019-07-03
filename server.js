@@ -14,7 +14,8 @@ const port = process.env.PORT || 3000,
       dev = process.env.NODE_ENV !== 'production'
 
 const app = next({ dev }),
-      handle = app.getRequestHandler()
+      routes = require('./routes'),
+      handler = routes.getRequestHandler(app)
 
 app.prepare().then(() => {
 
@@ -23,7 +24,7 @@ app.prepare().then(() => {
     server
         .use(session({ secret : '1', resave: false, saveUninitialized: true }))
         .use(nextI18NextMiddleware(nextI18NextInstance))
-        .get('*', (req, res) => handle(req, res))
+        .use(handler)
         .listen(port, err => {
 
             if (err) throw err
