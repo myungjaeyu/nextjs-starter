@@ -21,9 +21,11 @@
   "homepage": "https://github.com/myungjaeyu/nextjs-starter#readme",
   "dependencies": {
     "@zeit/next-sass": "^1.0.1",
+    "i18next": "^17.0.6",
     "immutability-helper": "^3.0.1",
     "next": "^8.1.0",
     "next-compose-plugins": "^2.2.0",
+    "next-i18next": "^0.44.0",
     "next-optimized-images": "^2.5.3",
     "next-redux-wrapper": "^3.0.0-alpha.3",
     "node-sass": "^4.12.0",
