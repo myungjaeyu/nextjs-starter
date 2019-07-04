@@ -1,0 +1,4 @@
+serviceName: "nextjs-starter"
+region: "ap-northeast-2"
+domain: "example.com"
+certificate: "arn:aws:acm:us-east-1:00000000:certificate/00000000-00000000-00000000-00000000-00000000"

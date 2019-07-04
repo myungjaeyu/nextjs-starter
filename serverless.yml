@@ -1,0 +1,37 @@
+service: ${file(./sls-variables.yml):service}
+
+plugins:
+  - serverless-offline
+  - serverless-webpack
+  - serverless-apigw-binary
+  - serverless-apigwy-binary
+  - serverless-api-cloudfront
+
+custom:
+  webpackIncludeModules: true
+  apigwBinary:
+    types:
+      - '*/*'
+  apiCloudFront:
+    domain:
+      - ${file(./sls-variables.yml):domain}
+    certificate: ${file(./sls-variables.yml):certificate}
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: ${file(./sls-variables.yml):region}
+  memorySize: 512
+  environment:
+    NODE_ENV: "production"
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - http:
+          path: /
+          method: ANY
+      - http:
+          path: /{any+}
+          method: ANY
