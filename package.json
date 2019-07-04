@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon server.js",
     "build": "next build",
-    "start": "cross-env NODE_ENV=production nodemon server.js"
+    "start": "cross-env NODE_ENV=production serverless offline start"
   },
   "repository": {
     "type": "git",
