@@ -8,7 +8,8 @@ plugins:
   - serverless-api-cloudfront
 
 custom:
-  webpackIncludeModules: true
+  webpack:
+    webpackConfig: webpack.server.js
   apigwBinary:
     types:
       - '*/*'
