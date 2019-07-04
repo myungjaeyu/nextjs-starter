@@ -20,11 +20,10 @@ const app = next({ dev }),
       routes = require('./routes'),
       handler = routes.getRequestHandler(app)
 
-app.prepare().then(() => {
+const handleServer = () => {
 
-    const server = express()
-
-    const handleServeStatic = (req, res) => app.serveStatic(req, res, join(__dirname, '.next', parse(req.url, true).pathname))
+    const server = express(),
+          handleServeStatic = (req, res) => app.serveStatic(req, res, join(__dirname, '.next', parse(req.url, true).pathname))
 
     server
         .use(session({ secret : '1', resave: false, saveUninitialized: true }))
@@ -32,12 +31,32 @@ app.prepare().then(() => {
         .get('/sw.js', (req, res) => handleServeStatic(req, res))
         .get('/precache-manifest.*.js', (req, res) => handleServeStatic(req, res))
         .use(handler)
-        .listen(port, err => {
 
+    return server
+
+}
+
+
+
+if (dev) {
+
+    app.prepare().then(() => {
+
+        const server = handleServer()
+
+        server.listen(port, err => {
             if (err) throw err
 
             console.log(`> Ready on http://localhost:${ port }`)
-
         })
 
-})
+    })
+
+} else {
+
+    const server = handleServer()
+
+    exports.app = app
+    exports.server = server
+
+}
