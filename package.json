@@ -21,6 +21,7 @@
   "homepage": "https://github.com/myungjaeyu/nextjs-starter#readme",
   "dependencies": {
     "@zeit/next-sass": "^1.0.1",
+    "aws-serverless-express": "^3.3.6",
     "express": "^4.17.1",
     "express-session": "^1.16.2",
     "i18next": "^17.0.6",
@@ -46,6 +47,11 @@
   },
   "devDependencies": {
     "cross-env": "^5.2.0",
-    "nodemon": "^1.19.1"
+    "nodemon": "^1.19.1",
+    "serverless": "^1.46.1",
+    "serverless-api-cloudfront": "^0.9.5",
+    "serverless-apigw-binary": "^0.4.4",
+    "serverless-apigwy-binary": "^1.0.0",
+    "serverless-offline": "^5.6.0"
   }
 }
