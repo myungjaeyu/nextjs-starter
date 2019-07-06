@@ -1,4 +1,4 @@
-const routes = require('next-routes')
+import routes from 'next-routes'
 
-module.exports = routes()
-                    .add('index', '/test')
+export default routes()
+                .add('index', '/test')

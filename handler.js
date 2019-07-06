@@ -1,9 +1,9 @@
-const { app, server } = require('./server')
-const awsServerlessExpress = require('aws-serverless-express')
+import { app, server } from './server'
+import awsServerlessExpress from'aws-serverless-express'
 
 const binaryMimeTypes = ['*/*']
 
-exports.hello = (event, context) => {
+export const hello = (event, context) => {
 
     app.prepare().then(() => {
 

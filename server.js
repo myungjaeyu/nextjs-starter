@@ -1,11 +1,13 @@
-const { join } = require('path'),
-      { parse } = require('url')
+import { join } from 'path'
+import { parse } from 'url'
 
-const express = require('express'),
-      session = require('express-session'),
-      next = require('next'),
-      nextI18NextMiddleware = require('next-i18next/middleware'),
-      NextI18Next = require('next-i18next')
+import express from 'express'
+import session from 'express-session'
+import next from 'next'
+import nextI18NextMiddleware from 'next-i18next/middleware'
+import NextI18Next from 'next-i18next'
+
+import routes from './routes'
 
 const nextI18NextInstance = new NextI18Next({
     defaultLanguage: 'en',
@@ -17,7 +19,6 @@ const port = process.env.PORT || 3000,
       dev = process.env.NODE_ENV !== 'production'
 
 const app = next({ dev }),
-      routes = require('./routes'),
       handler = routes.getRequestHandler(app)
 
 const handleServer = () => {
@@ -38,11 +39,11 @@ const handleServer = () => {
 
 
 
+const server = handleServer()
+
 if (dev) {
 
     app.prepare().then(() => {
-
-        const server = handleServer()
 
         server.listen(port, err => {
             if (err) throw err
@@ -52,11 +53,9 @@ if (dev) {
 
     })
 
-} else {
+}
 
-    const server = handleServer()
-
-    exports.app = app
-    exports.server = server
-
+export {
+    app,
+    server
 }
