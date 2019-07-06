@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon server.js",
+    "dev": "nodemon -r esm server.js",
     "build": "next build",
     "start": "cross-env NODE_ENV=production serverless offline start"
   },
@@ -47,6 +47,7 @@
   },
   "devDependencies": {
     "cross-env": "^5.2.0",
+    "esm": "^3.2.25",
     "nodemon": "^1.19.1",
     "serverless": "^1.46.1",
     "serverless-api-cloudfront": "^0.9.5",
