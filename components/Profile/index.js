@@ -1,5 +1,5 @@
 import styles from '../../static/styles/components/Profile.scss'
-import { withTranslation } from '../../i18n'
+import NextI18NextInstance from '../../i18n'
 
 const Profile = ({ avatar, name, bio, t }) => (
     <article className={ styles.profile }>
@@ -15,4 +15,4 @@ const Profile = ({ avatar, name, bio, t }) => (
     </article>
 )
 
-export default withTranslation('profile')(Profile)
+export default NextI18NextInstance.withTranslation('profile')(Profile)

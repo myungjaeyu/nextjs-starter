@@ -5,15 +5,9 @@ import express from 'express'
 import session from 'express-session'
 import next from 'next'
 import nextI18NextMiddleware from 'next-i18next/middleware'
-import NextI18Next from 'next-i18next'
+import nextI18NextInstance from './i18n'
 
 import routes from './routes'
-
-const nextI18NextInstance = new NextI18Next({
-    defaultLanguage: 'en',
-    otherLanguages: ['ko'],
-    localeSubpaths : 'foreign'
-})
 
 const port = process.env.PORT || 3000,
       dev = process.env.NODE_ENV !== 'production'

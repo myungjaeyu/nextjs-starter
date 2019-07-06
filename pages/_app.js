@@ -6,7 +6,7 @@ import { Provider } from 'react-redux'
 import withRedux from 'next-redux-wrapper'
 import store from '../store'
 
-import { appWithTranslation } from '../i18n'
+import NextI18NextInstance from '../i18n'
 import { initGA } from '../analytics'
 
 class MyApp extends App {
@@ -66,5 +66,5 @@ class MyApp extends App {
 
 export default compose(
     withRedux(store),
-    appWithTranslation
+    NextI18NextInstance.appWithTranslation
 )(MyApp)

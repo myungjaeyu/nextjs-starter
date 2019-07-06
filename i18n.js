@@ -6,7 +6,4 @@ const NextI18NextInstance = new NextI18Next({
     localeSubpaths : 'foreign'
 })
 
-export const {
-    appWithTranslation,
-    withTranslation,
-} = NextI18NextInstance
+export default NextI18NextInstance
