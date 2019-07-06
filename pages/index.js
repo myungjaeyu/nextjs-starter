@@ -16,6 +16,8 @@ import svg from '../static/images/svg.svg'
 import Layout from '../components/layout'
 import Profile from '../components/Profile'
 
+import NextI18NextInstance from '../i18n'
+
 class Index extends Component {
 
     static async getInitialProps (pageProps) {
@@ -40,6 +42,7 @@ class Index extends Component {
 
     render() {
 
+        const { i18n } = NextI18NextInstance
         const { data } = this.props
 
         const { avatar_url, name, bio } = data
@@ -69,6 +72,10 @@ class Index extends Component {
                         name={ name } 
                         bio={ bio }
                     />
+
+
+                    <button onClick={ _ => i18n.changeLanguage('en')}> EN </button>
+                    <button onClick={ _ => i18n.changeLanguage('ko')}> KO </button>
 
                 </Layout>
 
