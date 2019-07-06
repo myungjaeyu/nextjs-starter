@@ -7,25 +7,23 @@ import next from 'next'
 import nextI18NextMiddleware from 'next-i18next/middleware'
 import nextI18NextInstance from './i18n'
 
-import routes from './routes'
-
 const port = process.env.PORT || 3000,
       dev = process.env.NODE_ENV !== 'production'
 
 const app = next({ dev }),
-      handler = routes.getRequestHandler(app)
+      handler = app.getRequestHandler()
 
 const handleServer = () => {
 
     const server = express(),
-          handleServeStatic = (req, res) => app.serveStatic(req, res, join(__dirname, '.next', parse(req.url, true).pathname))
+          handleServeStatic = (req, res) => app.serveStatic(req, res, join('.next', parse(req.url, true).pathname))
 
     server
         .use(session({ secret : '1', resave: false, saveUninitialized: true }))
         .use(nextI18NextMiddleware(nextI18NextInstance))
-        .get('/sw.js', (req, res) => handleServeStatic(req, res))
-        .get('/precache-manifest.*.js', (req, res) => handleServeStatic(req, res))
-        .use(handler)
+        .get('/sw.js', handleServeStatic)
+        .get('/precache-manifest.*.js', handleServeStatic)
+        .get('*', handler)
 
     return server
 
