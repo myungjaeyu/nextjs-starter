@@ -1,3 +1,3 @@
-export const FETCH_GITHUB = '[app] 🚀 fetchGithub'
-export const FETCH_GITHUB_SUCCESS = '[app] 🎁 fetchGithubSuccess'
-export const FETCH_GITHUB_FAILURE = '[app] 🎁 fetchGithubFailure'
+export const FETCH_GITHUB = '[github] 🚀 fetchGithub'
+export const FETCH_GITHUB_SUCCESS = '[github] 🎁 fetchGithubSuccess'
+export const FETCH_GITHUB_FAILURE = '[github] 🎁 fetchGithubFailure'

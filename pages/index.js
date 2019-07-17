@@ -1,35 +1,14 @@
 import { Component, Fragment } from 'react'
+import NextSeo from 'next-seo'
+import style from '../static/styles/index.scss'
 
-import { connect } from 'react-redux'
-import { StateObservable } from 'redux-observable'
-import { of, Subject } from 'rxjs'
+import img from '../static/images/img.png'
 
-import epics from '../store/epcis'
-import { fetchGithub } from '../store/actions'
-
-import styles from '../static/styles/index.scss'
-
-import png from '../static/images/png.png'
-import svg from '../static/images/svg.svg'
-
-import Layout from '../components/layout'
-import Profile from '../components/Profile'
+import Layout from '../components/Layout'
 
 class Index extends Component {
 
     static async getInitialProps (pageProps) {
-
-        const { store } = pageProps
-
-        const store$ = new StateObservable(new Subject(), store.getState())
-
-        const action = await epics(
-                                of(fetchGithub()),
-                                store$
-                            )
-                            .toPromise()
-
-        store.dispatch(action)
 
         return {
             mock : 'abc'
@@ -39,25 +18,23 @@ class Index extends Component {
 
     render() {
 
-        const { data } = this.props
+        const { mock } = this.props
 
-        const { avatar_url, name, bio } = data
+        const SEO = { 
+            title: `nextjs-starter`, 
+            description: mock
+        }
 
         return (
             <Fragment>
 
-                <Layout childrenStyles={ styles.index }>
+                <NextSeo config={ SEO } />
 
-                    <img src={ png } alt='' />
-                    <img src={ svg } alt='' />
+                <Layout childrenStyles={ style.index }>
 
-                    <p>nextjs-stater</p>
+                    <img src={ img } alt='' />
 
-                    <Profile 
-                        avatar={ avatar_url } 
-                        name={ name } 
-                        bio={ bio }
-                    />
+                    <p>nextjs-starter { mock }</p>
 
                 </Layout>
 
@@ -68,15 +45,4 @@ class Index extends Component {
 
 }
 
-const mapState = ({ app : { data } }) => ({
-    data
-})
-
-const mapDispatch = {
-    fetchGithub
-}
-
-export default connect(
-    mapState,
-    mapDispatch
-)(Index)
+export default Index

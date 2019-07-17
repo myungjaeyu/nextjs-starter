@@ -13,7 +13,7 @@ export const fetchGithub$ = (action$, store$) =>
         tap(e => console.log(e)),
         mergeMap(action =>
             request({
-                url: `https://api.github.com/users/${ store$.value.app.name }`
+                url: `https://api.github.com/users/${ store$.value.github.username }`
             })
             .pipe(
                 map(response =>

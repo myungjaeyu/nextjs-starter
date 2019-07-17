@@ -1,4 +1,4 @@
-import '../static/styles/components/header.scss'
+import '../../static/styles/components/header.scss'
 
 export default () => (
     <header>

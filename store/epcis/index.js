@@ -1,6 +1,6 @@
 import { combineEpics } from 'redux-observable'
 
-import { fetchGithub$ } from './app/fetchGithub'
+import { fetchGithub$ } from './github/fetchGithub'
 
 export default combineEpics(
     fetchGithub$

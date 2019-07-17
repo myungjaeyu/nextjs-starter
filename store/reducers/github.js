@@ -3,12 +3,12 @@ import { createReducer } from 'redux-create-reducer'
 
 import * as types from '../constants'
 
-const appState = {
-    name: 'myungjaeyu',
+const githubState = {
+    username: 'myungjaeyu',
     data: {}
 }
 
-export default createReducer(appState, {
+export default createReducer(githubState, {
     [types.FETCH_GITHUB_SUCCESS](state, { type, response}) {
 
         console.log({ type })
