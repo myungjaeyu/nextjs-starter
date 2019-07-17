@@ -1,5 +1,4 @@
 import { Component, Fragment } from 'react'
-import Helmet from 'react-helmet'
 
 import { connect } from 'react-redux'
 import { StateObservable } from 'redux-observable'
@@ -15,8 +14,6 @@ import svg from '../static/images/svg.svg'
 
 import Layout from '../components/layout'
 import Profile from '../components/Profile'
-
-import NextI18NextInstance from '../i18n'
 
 class Index extends Component {
 
@@ -42,23 +39,12 @@ class Index extends Component {
 
     render() {
 
-        const { i18n } = NextI18NextInstance
         const { data } = this.props
 
         const { avatar_url, name, bio } = data
 
         return (
             <Fragment>
-
-                <Helmet
-                    title='index page, nextjs-stater'
-                    meta={[
-                        { 
-                            property: 'og:title',
-                            content: 'index page, nextjs-stater'
-                        }
-                    ]}
-                />
 
                 <Layout childrenStyles={ styles.index }>
 
@@ -72,10 +58,6 @@ class Index extends Component {
                         name={ name } 
                         bio={ bio }
                     />
-
-
-                    <button onClick={ _ => i18n.changeLanguage('en')}> EN </button>
-                    <button onClick={ _ => i18n.changeLanguage('ko')}> KO </button>
 
                 </Layout>
 

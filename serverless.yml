@@ -2,14 +2,10 @@ service: ${file(./sls-variables.yml):service}
 
 plugins:
   - serverless-offline
-  - serverless-webpack
   - serverless-apigw-binary
-  - serverless-apigwy-binary
   - serverless-api-cloudfront
 
 custom:
-  webpack:
-    webpackConfig: webpack.server.js
   apigwBinary:
     types:
       - '*/*'
@@ -22,9 +18,9 @@ provider:
   name: aws
   runtime: nodejs8.10
   region: ${file(./sls-variables.yml):region}
-  memorySize: 512
   environment:
     NODE_ENV: "production"
+    NODE_SLS: true
 
 functions:
   hello:

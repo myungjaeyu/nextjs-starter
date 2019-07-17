@@ -1,53 +1,29 @@
-import { join } from 'path'
-import { parse } from 'url'
+const { join } = require('path'),
+      { parse } = require('url')
 
-import express from 'express'
-import session from 'express-session'
-import next from 'next'
-import nextI18NextMiddleware from 'next-i18next/middleware'
-import nextI18NextInstance from './i18n'
+const express = require('express'),
+      next = require('next')
 
 const port = process.env.PORT || 3000,
-      dev = process.env.NODE_ENV !== 'production'
+      dev = process.env.NODE_ENV !== 'production',
+      sls = process.env.NODE_SLS
 
 const app = next({ dev }),
-      handler = app.getRequestHandler()
-
-const handleServer = () => {
-
-    const server = express(),
-          handleServeStatic = (req, res) => app.serveStatic(req, res, join('.next', parse(req.url, true).pathname))
-
-    server
-        .use(session({ secret : '1', resave: false, saveUninitialized: true }))
-        .use(nextI18NextMiddleware(nextI18NextInstance))
-        .get('/sw.js', handleServeStatic)
-        .get('/precache-manifest.*.js', handleServeStatic)
-        .get('*', handler)
-
-    return server
-
-}
+      server = express(),
+      handle = app.getRequestHandler(),
+      handleServeStatic = (req, res) => app.serveStatic(req, res, join('.next', parse(req.url, true).pathname))
 
 
+server
+    .get('/sw.js', handleServeStatic)
+    .get('/precache-manifest.*.js', handleServeStatic)
+    .get('*', handle)
 
-const server = handleServer()
 
-if (dev) {
+if (!sls) app.prepare().then(() => server.listen(port, err => console.log(`> Ready on http://localhost:${ port }`)))
+else {
 
-    app.prepare().then(() => {
+    exports.app = app
+    exports.server = server
 
-        server.listen(port, err => {
-            if (err) throw err
-
-            console.log(`> Ready on http://localhost:${ port }`)
-        })
-
-    })
-
-}
-
-export {
-    app,
-    server
 }

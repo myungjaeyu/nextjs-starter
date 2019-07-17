@@ -1,7 +1,6 @@
 import styles from '../../static/styles/components/Profile.scss'
-import NextI18NextInstance from '../../i18n'
 
-const Profile = ({ avatar, name, bio, t }) => (
+const Profile = ({ avatar, name, bio }) => (
     <article className={ styles.profile }>
 
         <img src={ avatar } alt='' />
@@ -10,9 +9,7 @@ const Profile = ({ avatar, name, bio, t }) => (
 
         <h5>{ bio }</h5>
 
-        <h5>{ t('test') }</h5>
-
     </article>
 )
 
-export default NextI18NextInstance.withTranslation('profile')(Profile)
+export default Profile
