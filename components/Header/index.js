@@ -1,7 +1,19 @@
 import '../../static/styles/components/Header.scss'
 
-export default () => (
-    <header>
+import { PureComponent } from 'react'
 
-    </header>
-)
+class Header extends PureComponent {
+
+    render() {
+
+        return (
+            <header>
+
+            </header>
+        )
+
+    }
+
+}
+
+export default Header
