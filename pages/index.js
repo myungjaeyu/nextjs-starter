@@ -30,7 +30,7 @@ class Index extends Component {
 
                 <NextSeo config={ SEO } />
 
-                <Layout childrenStyles={ style.index }>
+                <Layout childrenClassName={ style.index }>
 
                     <img src={ img } alt='' />
 

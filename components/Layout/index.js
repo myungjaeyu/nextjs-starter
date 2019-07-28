@@ -3,12 +3,12 @@ import { Fragment } from 'react'
 import Header from './header'
 import Footer from './footer'
 
-export default ({ childrenStyles, children }) => (
+export default ({ childrenClassName, children }) => (
     <Fragment>
 
         <Header />
 
-        <main className={ childrenStyles }>
+        <main className={ childrenClassName }>
 
             { children }
 
