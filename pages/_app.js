@@ -1,10 +1,5 @@
 import App, { Container } from 'next/app'
 
-import { compose } from 'redux'
-import { Provider } from 'react-redux'
-import withRedux from 'next-redux-wrapper'
-import store from '../store'
-
 import '../static/styles/normalize.scss'
 import '../static/styles/base.scss'
 
@@ -32,18 +27,14 @@ class MyApp extends App {
 
     render () {
 
-        const { Component, pageProps, store } = this.props
+        const { Component, pageProps } = this.props
 
         return (
             <Container>
 
                 <NextSeo config={ SEO } />
 
-                <Provider store={ store }>
-
-                    <Component { ...pageProps } />
-
-                </Provider>
+                <Component { ...pageProps } />
 
             </Container>
         )
@@ -51,7 +42,4 @@ class MyApp extends App {
 
 }
 
-export default compose(
-    withRedux(store),
-    withGA('UA-xxxxxxxxx-1', Router)
-)(MyApp)
+export default withGA('UA-xxxxxxxxx-1', Router)(MyApp)

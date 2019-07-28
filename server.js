@@ -18,7 +18,6 @@ server
     .get('/sw.js', handleServeStatic)
     .get('/precache-manifest.*.js', handleServeStatic)
     .get('/ap/:username', (req, res) => app.render(req, res, '/axios/profile', { username: req.params.username }))
-    .get('/rp', (req, res) => app.render(req, res, '/redux/profile'))
     .get('*', handle)
 
 
