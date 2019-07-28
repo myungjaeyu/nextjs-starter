@@ -14,6 +14,10 @@ import SEO from '../next-seo.config'
 import Router from 'next/router'
 import withGA from 'next-ga'
 
+import * as Sentry from '@sentry/browser'
+
+Sentry.init({ dsn: 'ENTER_YOUR_SENTRY_DSN_HERE' })
+
 class MyApp extends App {
 
     static async getInitialProps ({ Component, ctx }) {
