@@ -36,9 +36,7 @@ class Index extends Component {
 
                     <p>nextjs-starter { mock }</p>
 
-                    <button onClick={ () => { throw new Error('test') }}>
-                        sentry
-                    </button>
+                    {/* <button onClick={ () => { throw new Error('test') }}>sentry</button> */}
 
                 </Layout>
 
