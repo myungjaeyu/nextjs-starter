@@ -6,6 +6,8 @@ import img from '../static/images/img.png'
 
 import Layout from '../components/Layout'
 
+import NextI18NextInstance from '../i18n'
+
 class Index extends Component {
 
     static async getInitialProps (pageProps) {
@@ -18,12 +20,14 @@ class Index extends Component {
 
     render() {
 
-        const { mock } = this.props
+        const { mock, t } = this.props
 
         const SEO = { 
             title: `nextjs-starter`, 
             description: mock
         }
+
+        const { i18n } = NextI18NextInstance
 
         return (
             <Fragment>
@@ -38,6 +42,13 @@ class Index extends Component {
 
                     {/* <button onClick={ () => { throw new Error('test') }}>sentry</button> */}
 
+
+                    <p>{ t('message') }</p>
+
+                    <button onClick={ _ => i18n.changeLanguage('en')}> EN </button>
+                    <button onClick={ _ => i18n.changeLanguage('ko')}> KO </button>
+                    <button onClick={ _ => i18n.changeLanguage('mn')}> MN </button>
+
                 </Layout>
 
             </Fragment>
@@ -47,4 +58,4 @@ class Index extends Component {
 
 }
 
-export default Index
+export default NextI18NextInstance.withTranslation('common')(Index)
