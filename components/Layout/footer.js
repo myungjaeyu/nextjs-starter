@@ -1,4 +1,4 @@
-import '../../static/styles/components/Footer.scss'
+import '../../static/styles/components/footer.scss'
 
 export default () => (
     <footer>

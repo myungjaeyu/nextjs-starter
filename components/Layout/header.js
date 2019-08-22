@@ -1,4 +1,4 @@
-import '../../static/styles/components/Header.scss'
+import '../../static/styles/components/header.scss'
 
 import { PureComponent } from 'react'
 
