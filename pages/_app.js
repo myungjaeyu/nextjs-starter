@@ -1,4 +1,5 @@
-import App, { Container } from 'next/app'
+import { Fragment } from 'react'
+import App from 'next/app'
 
 import '../static/styles/normalize.scss'
 import '../static/styles/base.scss'
@@ -34,13 +35,13 @@ class MyApp extends App {
         const { Component, pageProps } = this.props
 
         return (
-            <Container>
+            <Fragment>
 
                 <NextSeo config={ SEO } />
 
                 <Component { ...pageProps } />
 
-            </Container>
+            </Fragment>
         )
     }
 
