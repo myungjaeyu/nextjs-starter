@@ -4,13 +4,15 @@ const { join } = require('path'),
 const express = require('express'),
       next = require('next')
 
+const Router = require('./routes')
+
 const port = process.env.PORT || 3000,
       dev = process.env.NODE_ENV !== 'production',
       sls = process.env.NODE_SLS
 
 const app = next({ dev }),
       server = express(),
-      handle = app.getRequestHandler(),
+      handle = Router.getRequestHandler(app),
       handleServeStatic = (req, res) => app.serveStatic(req, res, join('.next', parse(req.url, true).pathname))
 
 const nextI18NextMiddleware = require('next-i18next/middleware').default,
@@ -24,8 +26,6 @@ server
     .use(nextI18NextMiddleware(nextI18NextInstance))
     .get('/sw.js', handleServeStatic)
     .get('/precache-manifest.*.js', handleServeStatic)
-    .get('/ap/:username', (req, res) => app.render(req, res, '/axios/profile', { username: req.params.username }))
-    .get('/rp', (req, res) => app.render(req, res, '/redux/profile'))
     .get('*', handle)
 
 
