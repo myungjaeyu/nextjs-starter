@@ -1,6 +1,11 @@
 import { Fragment } from 'react'
 import App from 'next/app'
 
+import { compose } from 'redux'
+import { Provider } from 'react-redux'
+import withRedux from 'next-redux-wrapper'
+import store from '../store'
+
 import '../static/styles/normalize.scss'
 import '../static/styles/base.scss'
 
@@ -32,14 +37,18 @@ class MyApp extends App {
 
     render () {
 
-        const { Component, pageProps } = this.props
+        const { Component, pageProps, store } = this.props
 
         return (
             <Fragment>
 
                 <NextSeo config={ SEO } />
 
-                <Component { ...pageProps } />
+                <Provider store={ store }>
+
+                    <Component { ...pageProps } />
+
+                </Provider>
 
             </Fragment>
         )
@@ -47,4 +56,7 @@ class MyApp extends App {
 
 }
 
-export default withGA('UA-xxxxxxxxx-1', Router)(NextI18NextInstance.appWithTranslation(MyApp))
+export default compose(
+    withRedux(store),
+    withGA('UA-xxxxxxxxx-1', Router)
+)(NextI18NextInstance.appWithTranslation(MyApp)) 
