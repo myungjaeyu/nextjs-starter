@@ -37,11 +37,18 @@
     "next-i18next": "^0.54.0",
     "next-optimized-images": "^2.5.3",
     "next-pwa": "^1.0.7",
+    "next-redux-wrapper": "^4.0.1",
     "next-seo": "^1.12.0",
     "node-sass": "^4.12.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "styled-components": "^4.4.0"
+    "react-redux": "^7.1.1",
+    "redux": "^4.0.4",
+    "redux-create-reducer": "^2.0.0",
+    "redux-observable": "^1.2.0",
+    "rxjs": "^6.5.3",
+    "styled-components": "^4.4.0",
+    "universal-rxjs-ajax": "^2.0.3"
   },
   "devDependencies": {
     "nodemon": "^1.19.1",
