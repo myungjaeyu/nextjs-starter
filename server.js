@@ -4,15 +4,13 @@ const { join } = require('path'),
 const express = require('express'),
       next = require('next')
 
-const Router = require('./routes')
-
 const port = process.env.PORT || 3000,
       dev = process.env.NODE_ENV !== 'production',
       sls = process.env.NODE_SLS
 
 const app = next({ dev }),
       server = express(),
-      handle = Router.getRequestHandler(app),
+      handle = app.getRequestHandler(),
       handleServeStatic = (req, res) => app.serveStatic(req, res, join('.next', parse(req.url, true).pathname))
 
 const nextI18NextMiddleware = require('next-i18next/middleware').default,
