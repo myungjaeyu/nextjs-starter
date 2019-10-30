@@ -15,8 +15,6 @@ import SEO from '../next-seo.config'
 import Router from 'next/router'
 import withGA from 'next-ga'
 
-import NextI18NextInstance from '../i18n'
-
 // import * as Sentry from '@sentry/browser'
 
 // Sentry.init({ dsn: 'ENTER_YOUR_SENTRY_DSN_HERE' })
@@ -28,8 +26,6 @@ class MyApp extends App {
         let pageProps = {}
 
         if (Component.getInitialProps) pageProps = await Component.getInitialProps(ctx)
-
-        Object.assign(pageProps, { namespacesRequired: ['common'] })
 
         return { pageProps }
 
@@ -59,4 +55,4 @@ class MyApp extends App {
 export default compose(
     withRedux(store),
     withGA('UA-xxxxxxxxx-1', Router)
-)(NextI18NextInstance.appWithTranslation(MyApp)) 
+)(MyApp)

@@ -12,15 +12,7 @@ const app = next({ dev }),
       handle = app.getRequestHandler(),
       handleServeStatic = (req, res) => app.serveStatic(req, res, join('.next', parse(req.url, true).pathname))
 
-const nextI18NextMiddleware = require('next-i18next/middleware').default,
-    NextI18Next = require('next-i18next').default,
-    nextI18NextInstance = new NextI18Next({
-        defaultLanguage: 'en',
-        otherLanguages: ['ko', 'mn']
-    })
-
 server
-    .use(nextI18NextMiddleware(nextI18NextInstance))
     .get('/sw.js', handleServeStatic)
     .get('/precache-manifest.*.js', handleServeStatic)
     .get('*', handle)
