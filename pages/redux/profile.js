@@ -6,7 +6,7 @@ import { StateObservable } from 'redux-observable'
 import { of, Subject } from 'rxjs'
 
 import epics from '../../store/epics'
-import { fetchGithub } from '../../store/actions'
+import { fetchGithub } from '../../store/modules/github'
 
 import Layout from '../../components/Layout'
 

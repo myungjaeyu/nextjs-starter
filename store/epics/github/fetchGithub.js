@@ -5,7 +5,7 @@ import { mergeMap, catchError, map, tap } from 'rxjs/operators'
 import { request } from 'universal-rxjs-ajax'
 
 import { FETCH_GITHUB } from '../../constants'
-import { fetchGithubSuccess, fetchGithubFailure } from '../../actions'
+import { fetchGithubSuccess, fetchGithubFailure } from '../../modules/github'
 
 export const fetchGithub$ = (action$, store$) =>
     action$.pipe(
@@ -16,15 +16,15 @@ export const fetchGithub$ = (action$, store$) =>
                 url: `https://api.github.com/users/${ store$.value.github.username }`
             })
             .pipe(
-                map(response =>
+                map(({ response }) =>
                     fetchGithubSuccess(
-                        response.response
+                        { data: response }
                     )
                 ),
-                catchError(error =>
+                catchError(({ xhr: { response }}) =>
                     of(
                         fetchGithubFailure(
-                            error.xhr.response
+                            { error: response }
                         )
                     )
                 )
