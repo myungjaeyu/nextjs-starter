@@ -6,9 +6,7 @@
   "scripts": {
     "dev": "nodemon server.js",
     "build": "next build",
-    "start": "NODE_ENV=production nodemon server.js",
-    "sls": "NODE_ENV=production serverless offline start",
-    "deploy": "npm run build && serverless deploy"
+    "start": "NODE_ENV=production nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -24,7 +22,6 @@
   "dependencies": {
     "@sentry/browser": "^5.5.0",
     "@zeit/next-sass": "^1.0.1",
-    "aws-serverless-express": "^3.3.6",
     "axios": "^0.19.0",
     "express": "^4.17.1",
     "i18next": "^17.0.10",
@@ -52,10 +49,6 @@
     "universal-rxjs-ajax": "^2.0.3"
   },
   "devDependencies": {
-    "nodemon": "^1.19.1",
-    "serverless": "^1.46.1",
-    "serverless-api-cloudfront": "^0.9.5",
-    "serverless-apigw-binary": "^0.4.4",
-    "serverless-offline": "^5.6.0"
+    "nodemon": "^1.19.1"
   }
 }

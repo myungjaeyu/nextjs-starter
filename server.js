@@ -5,8 +5,7 @@ const express = require('express'),
       next = require('next')
 
 const port = process.env.PORT || 3000,
-      dev = process.env.NODE_ENV !== 'production',
-      sls = process.env.NODE_SLS
+      dev = process.env.NODE_ENV !== 'production'
 
 const app = next({ dev }),
       server = express(),
@@ -26,11 +25,4 @@ server
     .get('/precache-manifest.*.js', handleServeStatic)
     .get('*', handle)
 
-
-if (!sls) app.prepare().then(() => server.listen(port, err => console.log(`> Ready on http://localhost:${ port }`)))
-else {
-
-    exports.app = app
-    exports.server = server
-
-}
+app.prepare().then(() => server.listen(port, err => console.log(`> Ready on http://localhost:${ port }`)))
