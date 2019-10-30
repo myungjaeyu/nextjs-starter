@@ -1,5 +1,9 @@
 import { Component, Fragment } from 'react'
 import NextSeo from 'next-seo'
+import Link from 'next/link'
+
+import { connect } from 'react-redux'
+
 import style from '../static/styles/index.scss'
 
 import img from '../static/images/img.png'
@@ -11,14 +15,14 @@ class Index extends Component {
     static async getInitialProps (pageProps) {
 
         return {
-            mock : 'abc'
+            mock : 'myungjaeyu'
         }
 
     }
 
     render() {
 
-        const { mock, t } = this.props
+        const { mock } = this.props
 
         const SEO = { 
             title: `nextjs-starter`, 
@@ -36,7 +40,13 @@ class Index extends Component {
 
                     <p>nextjs-starter { mock }</p>
 
-                    <p>안녕</p>
+                    <p>안녕 { mock }</p>
+
+                        <Link href='/profile/[username]' as={`/profile/${ mock }`}>
+
+                            <p>Profile</p>
+
+                        </Link>
 
                 </Layout>
 
@@ -47,4 +57,20 @@ class Index extends Component {
 
 }
 
-export default Index
+const mapState = (state) => {
+
+    console.log(state)
+
+    return ({
+
+    })
+}
+
+const mapDispatch = {
+
+}
+
+export default connect(
+    mapState,
+    mapDispatch
+)(Index)

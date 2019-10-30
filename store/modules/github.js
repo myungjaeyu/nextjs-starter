@@ -7,21 +7,26 @@ export const fetchGithubSuccess = createAction(types.FETCH_GITHUB_SUCCESS) // re
 export const fetchGithubFailure = createAction(types.FETCH_GITHUB_FAILURE) // error
 
 const defaultState = {
-    username: 'myungjaeyu',
+    pending: false,
     data: {}
 }
 
 export default handleActions({
     [types.FETCH_GITHUB] : (state) => {
 
-        return state
+        return immutable(state, {
+            pending: {
+                $set: true
+            }
+        })
 
     },
     [types.FETCH_GITHUB_SUCCESS] : (state, { type, payload: { data } }) => {
 
-        console.log(type)
-
         return immutable(state, {
+            pending: {
+                $set: false
+            },
             data: {
                 $set: data
             }
@@ -30,9 +35,13 @@ export default handleActions({
     },
     [types.FETCH_GITHUB_FAILURE] : (state, { payload: { error } }) => {
 
-        error && console.error(error)
+        // console.log(error)
 
-        return state
+        return immutable(state, {
+            pending: {
+                $set: false
+            }
+        })
 
     }
 }, defaultState)
