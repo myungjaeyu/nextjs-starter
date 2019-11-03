@@ -1,13 +1,13 @@
 import { ofType } from 'redux-observable'
 
 import { of } from 'rxjs'
-import { mergeMap, catchError, map, tap, delay } from 'rxjs/operators'
+import { mergeMap, catchError, map, tap } from 'rxjs/operators'
 import { request } from 'universal-rxjs-ajax'
 
 import { FETCH_GITHUB } from '../../constants'
 import { fetchGithubSuccess, fetchGithubFailure } from '../../modules/github'
 
-export const fetchGithub$ = (action$, store$) =>
+export const fetchGithub$ = (action$) =>
     action$.pipe(
         ofType(FETCH_GITHUB),
         tap(e => console.log(e)),

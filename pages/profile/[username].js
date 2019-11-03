@@ -41,7 +41,9 @@ class Profile extends Component {
 
         const { isServer, data } = props
 
-        if (!isServer && Object.keys(data).length === 0) {
+        const isEmpty = obj => Object.keys(obj).length === 0
+
+        if (!isServer && isEmpty(data)) {
 
             const { fetchGithub, username } = props
 

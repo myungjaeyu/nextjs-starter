@@ -6,8 +6,6 @@ import { connect } from 'react-redux'
 
 import style from '../static/styles/index.scss'
 
-import img from '../static/images/img.png'
-
 import Layout from '../components/Layout'
 
 class Index extends Component {
@@ -34,19 +32,21 @@ class Index extends Component {
 
                 <NextSeo config={ SEO } />
 
-                <Layout childrenClassName={ style.index }>
-
-                    <img src={ img } alt='' />
-
-                    <p>nextjs-starter { mock }</p>
+                <Layout ClassName={ style.index }>
 
                     <p>안녕 { mock }</p>
 
+                    <p>
+
                         <Link href='/profile/[username]' as={`/profile/${ mock }`}>
 
-                            <p>Profile</p>
+                            <a>
+                                Profile
+                            </a>
 
                         </Link>
+
+                    </p>
 
                 </Layout>
 
