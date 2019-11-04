@@ -2,11 +2,11 @@
   "name": "nextjs-stater",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "bin/www",
   "scripts": {
-    "dev": "nodemon server.js",
+    "dev": "nodemon bin/www",
     "build": "next build",
-    "start": "NODE_ENV=production nodemon server.js"
+    "start": "NODE_ENV=production nodemon bin/www"
   },
   "repository": {
     "type": "git",
