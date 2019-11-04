@@ -12,6 +12,8 @@ import 'shards-ui/dist/css/shards.min.css'
 import '../static/styles/normalize.scss'
 import '../static/styles/base.scss'
 
+import '../static/styles/font.css'
+
 import NextSeo from 'next-seo'
 import SEO from '../next-seo.config'
 
