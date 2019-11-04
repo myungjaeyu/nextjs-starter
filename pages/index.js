@@ -8,23 +8,26 @@ import style from '../static/styles/index.scss'
 
 import Layout from '../components/Layout'
 
+import { authLogout } from '../store/modules/auth'
+
 class Index extends Component {
 
     static async getInitialProps (pageProps) {
 
         return {
-            mock : 'myungjaeyu'
+
         }
 
     }
 
+    handleLogout = () => this.props.authLogout()
+
     render() {
 
-        const { mock } = this.props
+        const { token, user: { username } } = this.props
 
         const SEO = { 
-            title: `nextjs-starter`, 
-            description: mock
+            title: `nextjs-starter`
         }
 
         return (
@@ -34,11 +37,11 @@ class Index extends Component {
 
                 <Layout ClassName={ style.index }>
 
-                    <p>안녕 { mock }</p>
+                    <p>안녕 { username }</p>
 
                     <p>
 
-                        <Link href='/profile/[username]' as={`/profile/${ mock }`}>
+                        <Link href='/profile/[username]' as={`/profile/${ username }`}>
 
                             <a>
                                 Profile
@@ -47,6 +50,24 @@ class Index extends Component {
                         </Link>
 
                     </p>
+
+                    <p>
+
+                        <Link href='/login' >
+
+                            <a>
+                                Login
+                            </a>
+
+                        </Link>
+
+                    </p>
+
+                    { token && 
+                        <p>
+                            <button onClick={ this.handleLogout }>Logout</button>
+                        </p> 
+                    }
 
                 </Layout>
 
@@ -59,15 +80,13 @@ class Index extends Component {
 
 const mapState = (state) => {
 
-    console.log(state)
-
     return ({
 
     })
 }
 
 const mapDispatch = {
-
+    authLogout
 }
 
 export default connect(
