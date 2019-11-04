@@ -12,8 +12,7 @@ import '../static/styles/base.scss'
 import NextSeo from 'next-seo'
 import SEO from '../next-seo.config'
 
-import Router from 'next/router'
-import withGA from 'next-ga'
+import withAuth from '../hoc/withAuth'
 
 class MyApp extends App {
 
@@ -29,7 +28,7 @@ class MyApp extends App {
 
     render () {
 
-        const { Component, pageProps, store } = this.props
+        const { Component, pageProps, store, token, user } = this.props
 
         return (
             <Fragment>
@@ -38,7 +37,7 @@ class MyApp extends App {
 
                 <Provider store={ store }>
 
-                    <Component { ...pageProps } />
+                    <Component { ...pageProps } token={ token } user={ user } />
 
                 </Provider>
 
@@ -50,5 +49,5 @@ class MyApp extends App {
 
 export default compose(
     withRedux(store),
-    withGA('UA-xxxxxxxxx-1', Router)
+    withAuth
 )(MyApp)
