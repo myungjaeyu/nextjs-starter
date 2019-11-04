@@ -3,7 +3,9 @@ import '../../static/styles/components/footer.scss'
 export default () => (
     <footer>
 
-        <h1>Footer</h1>
+        <p className='text-center'>
+            Copyright © 2019- Starter. All Rights Reserved.
+        </p>
 
     </footer>
 )
