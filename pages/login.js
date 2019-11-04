@@ -10,18 +10,22 @@ import style from '../static/styles/login.scss'
 
 import { authLogin } from '../store/modules/auth'
 
-const LoginForm = ({ onSubmit, pending }) => {
+import { Button } from 'shards-react'
+
+const LoginForm = ({ onSubmit, pending, children }) => {
 
     const { register, handleSubmit, errors } = useForm()
 
     return (
-        <form onSubmit={ handleSubmit(onSubmit) }>
+        <form onSubmit={ handleSubmit(onSubmit) } className='text-center'>
 
-            <input name='username' placeholder='Username' ref={ register({ required: true }) } />
+            { children }
 
-            <input name='password' type='password' placeholder='Password' ref={ register({ required: true }) } />
+            <input autoFocus name='username' placeholder='Username' className='form-control mb-1' ref={ register({ required: true }) } />
 
-            <input type='submit' value='Login' />
+            <input name='password' type='password' placeholder='Password' className='form-control mb-1' ref={ register({ required: true }) } />
+
+            <Button block theme='light'>Login</Button>
 
             { pending && <p>Please wait...</p> }
 
@@ -85,9 +89,15 @@ class Login extends Component {
 
                 <main className={ style.login }>
 
-                    <h1>Login</h1>
+                    <article className={ `${ style.wrapper } d-flex justify-content-center`}>
 
-                    <LoginForm onSubmit={ this.handleAuth } pending={ pending } />
+                        <LoginForm onSubmit={ this.handleAuth } pending={ pending }>
+
+                            <h1>Nextjs Starter</h1>
+
+                        </LoginForm>
+
+                    </article>
 
                 </main>
 
