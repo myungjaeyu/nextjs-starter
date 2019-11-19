@@ -12,7 +12,7 @@ import { authLogin } from '../store/modules/auth'
 
 import { Button } from 'shards-react'
 
-const LoginForm = ({ onSubmit, pending, children }) => {
+const LoginForm = ({ onSubmit, children }) => {
 
     const { register, handleSubmit, errors } = useForm()
 
@@ -26,8 +26,6 @@ const LoginForm = ({ onSubmit, pending, children }) => {
             <input name='password' type='password' placeholder='Password' className='form-control mb-1' ref={ register({ required: true }) } />
 
             <Button block theme='light'>Login</Button>
-
-            { pending && <p>Please wait...</p> }
 
             { errors.username && <p>Please enter an username.</p> }
 
@@ -76,7 +74,7 @@ class Login extends Component {
 
     render() {
 
-        const { pending } = this.props
+        const { pending, errors } = this.props
 
         const SEO = { 
             title: `Login`
@@ -91,13 +89,17 @@ class Login extends Component {
 
                     <article className={ `${ style.wrapper } d-flex justify-content-center`}>
 
-                        <LoginForm onSubmit={ this.handleAuth } pending={ pending }>
+                        <LoginForm onSubmit={ this.handleAuth } >
 
                             <h1>Nextjs Starter</h1>
 
                         </LoginForm>
 
                     </article>
+
+                    { pending && <p className='text-center'>Please wait...</p> }
+
+                    { errors && errors.map((e, i) => <p key={ i } className='text-center'> { e } </p>)}
 
                 </main>
 
@@ -108,10 +110,11 @@ class Login extends Component {
 
 }
 
-const mapState = ({ auth: { pending }}) => {
+const mapState = ({ auth: { pending, errors }}) => {
 
     return ({
-        pending
+        pending,
+        errors
     })
 
 }

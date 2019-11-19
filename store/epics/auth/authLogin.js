@@ -11,29 +11,41 @@ export const authLogin$ = (action$) =>
     action$.pipe(
         ofType(AUTH_LOGIN),
         tap(e => console.log(e)),
-        mergeMap(action =>
-            request({
-                url: `https://api.github.com/users/myungjaeyu`
+        mergeMap(action => {
+
+            const { payload: { username, password } } = action
+
+            return request({
+                url: false || `https://api.github.com/users/myungjaeyu`,
+                method: 'GET' || 'POST',
+                body: {
+                    username,
+                    password
+                },
+                /*
+                headers: {
+                    Authorization: `Bearer `, // accessToken,
+                }*/
+
             })
             .pipe(
                 delay(1000),
-                map(() =>
-                    authLoginSuccess(
+                map((e) => {
+
+                    const { error, token, user } = e.response
+
+                    if (error) return authLoginFailure({ errors: [ error ] }) 
+
+                    return authLoginSuccess(
                         {
-                            token: 'afaf',
-                            user: {
-                                username: action.payload.username
-                            }
+                            token: token || 'afaf',
+                            user: user || { username }
                         }
                     )
-                ),
-                catchError(() =>
-                    of(
-                        authLoginFailure(
-                            { error: [] }
-                        )
-                    )
-                )
+
+                }),
+                catchError((e) => of(authLoginFailure({ errors: [ e.message ] })))
             )
-        )
+
+        })
     ) 
