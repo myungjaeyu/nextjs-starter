@@ -6,13 +6,10 @@ import { Provider } from 'react-redux'
 import withRedux from 'next-redux-wrapper'
 import store from '../store'
 
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'shards-ui/dist/css/shards.min.css'
-
 import '../static/styles/normalize.scss'
 import '../static/styles/base.scss'
 
-import '../static/styles/font.css'
+import '../static/styles/font.scss'
 
 import NextSeo from 'next-seo'
 import SEO from '../next-seo.config'
