@@ -45,7 +45,6 @@
     "redux-observable": "^1.2.0",
     "rxjs": "^6.5.3",
     "shards-react": "^1.0.3",
-    "styled-components": "^4.4.0",
     "universal-rxjs-ajax": "^2.0.3"
   },
   "devDependencies": {

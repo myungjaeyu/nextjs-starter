@@ -38,7 +38,6 @@ yarn dev
 
 - Nextjs
 - Sass
-- Styled-components
 - Redux-observable
 - Shards-react
 - File-system dynamic route
@@ -68,7 +67,6 @@ ___
 > | Vendor                 | URL                                                    |
 > |------------------------|--------------------------------------------------------|
 > | node-sass              | https://github.com/sass/node-sass                      |
-> | styled-components      | https://github.com/styled-components/styled-components |
 > | shards-react           | https://github.com/DesignRevision/shards-react         |
 > | react-fontawesome      | https://github.com/danawoodman/react-fontawesome       |
 > | Noto Sans CJK(경량화 버전)| https://nonria.com/post/104                            |
