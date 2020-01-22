@@ -38,6 +38,7 @@ yarn dev
 
 - Nextjs
 - Sass
+- Emotion
 - Redux-observable
 - Shards-react
 - File-system dynamic route
@@ -67,6 +68,7 @@ ___
 > | Vendor                 | URL                                                    |
 > |------------------------|--------------------------------------------------------|
 > | node-sass              | https://github.com/sass/node-sass                      |
+> | emotion                | https://github.com/emotion-js/emotion
 > | shards-react           | https://github.com/DesignRevision/shards-react         |
 > | react-fontawesome      | https://github.com/danawoodman/react-fontawesome       |
 > | Noto Sans CJK(경량화 버전)| https://nonria.com/post/104                            |
